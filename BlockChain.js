@@ -7,19 +7,6 @@ const SHA256 = require('crypto-js/sha256');
 const ldb = require('./levelSandbox');
 const Block =  require('./Block');
 
-///* ===== Block Class ==============================
-//|  Class with a constructor for block 			   |
-//|  ===============================================*/
-//
-//class Block{
-//	constructor(data){
-//		this.hash = "";
-//		this.height = 0;
-//		this.body = data;
-//		this.time = 0;
-//		this.previousBlockHash = "";
-//	}
-//}
 
 /* ===== Blockchain Class ==========================
 |  Class with a constructor for new blockchain 		|
@@ -208,22 +195,5 @@ class Blockchain{
 }
 
 module.exports = Blockchain;
-
-
-//Testing 
-//var chain = new Blockchain();
-//
-//(function theLoop (i) {
-//    setTimeout(function () {
-//        var testBlk = new Block("Test Block - " + (i + 1));
-//        chain.addBlock(testBlk).then((res)=>{
-//            i++;
-//            if (i < 5) theLoop(i);
-//            else chain.validateChain();
-//        }).catch((err)=>{
-//        	console.log('Could not add block '+(i+1),err);
-//        });
-//    }, 1000);
-//})(0);
 
 
