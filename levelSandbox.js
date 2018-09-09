@@ -12,7 +12,6 @@ var exports = module.exports;
 //Add data to levelDB with key/value pair using promise
 function addLevelDBData(key,value){
 	return new Promise(function(resolve,reject){
-		//console.log('adding key '+key + ' value '+value);
 		db.put(key,value,function(err){
 			if(err) reject(err);
 			else resolve(value);
@@ -25,11 +24,9 @@ exports.addLevelDBData = addLevelDBData;
 //Get data from levelDB with key
 function getLevelDBData(key){
 	return new Promise(function(resolve,reject){
-		//console.log('key '+key);
 		db.get(key, function(err,value){
 			if(err) reject(err);
 			else {
-				//console.log('Value Blocck: '+value);
 				resolve(value);
 			}
 		});

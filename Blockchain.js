@@ -45,7 +45,6 @@ class Blockchain{
 				newBlock.height = ht+1;
 				// UTC timestamp
 				newBlock.time = new Date().getTime().toString().slice(0,-3);
-				//console.log('addBlock '+newBlock.toString());
 				this.getBlock(ht).then((prevBlock)=>{
 					// previous block hash
 					newBlock.previousBlockHash = prevBlock.hash;
@@ -74,7 +73,6 @@ class Blockchain{
 	getBlockHeight(){
 		return new Promise(function(resolve,reject){
 			ldb.getCountOfEntries().then(function(count){
-				//console.log('got count : '+count);
 				resolve(count-1);
 			}).catch(function(err){
 				console.log('Couldnot get count of entries');
@@ -128,7 +126,6 @@ class Blockchain{
 
 	//validating - matching current block to next block
 	async validateLink(height){
-		//console.log('Validating links');
 		let errorLog = [];
 		for (let i = 0; i < height; i++) {
 			try {
@@ -152,7 +149,6 @@ class Blockchain{
 
 	//validating each block of block chain
 	async validateEachBlock(height){
-		//console.log('Validating each block');
 		let errorLog = [];
 		for (let i = 0; i <= height; i++) {
 			try {
