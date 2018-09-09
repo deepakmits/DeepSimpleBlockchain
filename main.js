@@ -1,6 +1,6 @@
-/* ===== Main JS ===================================
+/* ===== Main JS =============
 |  to test blockchain    |
-|  =============================================================*/
+|  ===========================*/
 
 const Blockchain = require('./BlockChain');
 var chain = new Blockchain();
