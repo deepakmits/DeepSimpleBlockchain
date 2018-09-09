@@ -81,7 +81,7 @@ class Blockchain{
 			});
 		});
 	}
-
+	
 	//get current block height of saved block chain
 	getBlockHeight(){
 		return new Promise(function(resolve,reject){
@@ -207,6 +207,7 @@ class Blockchain{
 }
 
 module.exports = Blockchain;
+
 
 //Testing 
 var chain = new Blockchain();
