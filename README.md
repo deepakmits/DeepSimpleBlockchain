@@ -35,6 +35,8 @@ Method Type : GET
 
 Description : Gets block at a given height
 
+Validation : Height is required to get the block.
+
 URL - http://localhost:8000/block/{height}
 
 Curl - To get block at height 1
@@ -60,6 +62,8 @@ Response Body - Block in JSON Format
 Method Type : POST
 
 Description : Adds block to current blockchain,passing a block data as payload => {"body":"Block data"}
+
+Validation : Block can't be added if body is empty.
 
 URL - http://localhost:8000/block
 
