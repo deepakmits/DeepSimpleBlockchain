@@ -24,45 +24,62 @@ npm install crypto-js --save
 ```
 npm install level --save
 ```
+- Install Node Js Framework Hapi with --save flag
+```
+npm install hapi --save
+```
 
-## Testing
+# REST End Points
+## GET Block end point
+Method Type : GET
 
-To test code:
-1: Open a command prompt or shell terminal after install node.js.
-2: Enter a node session, also known as REPL (Read-Evaluate-Print-Loop).
+Description : Gets block at a given height
+
+URL - http://localhost:8000/block/{height}
+
+Curl - To get block at height 1
 ```
-node
+curl -X GET --header 'Accept: application/json' 'http://localhost:8000/block/1'
 ```
-3: Copy and paste your code into your node session
-4: Instantiate blockchain with blockchain variable
+Request URL - To get block at height 1
 ```
-let blockchain = new Blockchain();
+http://localhost:8000/block/1
 ```
-5: Generate 10 blocks using a for loop
+Response Body - Block in JSON Format
 ```
-for (var i = 0; i <= 10; i++) {
-  blockchain.addBlock(new Block("test data "+i));
+{
+  "hash": "ecb6600d95546adf1fd805b5fbf140f0e1b9ea1b74ba23ff625ba21d74d601cf",
+  "height": 1,
+  "body": "Test Block - 1",
+  "time": "1536583513",
+  "previousBlockHash": "5767439e14a8ce0c0c80de149817f4bba13162ccbd4659d1884ba29aeb867085"
 }
 ```
-6: Validate blockchain
+
+## Post Block end point
+Method Type : POST
+
+Description : Adds block to current blockchain,passing a block data as payload => {"body":"Block data"}
+
+URL - http://localhost:8000/block
+
+Curl - To add block
 ```
-blockchain.validateChain();
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "body": "deep chain"
+}' 'http://localhost:8000/block'
 ```
-7: Induce errors by changing block data
+Request URL - To add block
 ```
-let inducedErrorBlocks = [2,4,7];
-for (var i = 0; i < inducedErrorBlocks.length; i++) {
-  blockchain.chain[inducedErrorBlocks[i]].data='induced chain error';
+http://localhost:8000/block
+```
+Response Body - Added Block in JSON Format
+```
+{
+  "hash": "6f470d29f1ee4e9a1f1bf48f0f9468085564c0046cc92976895c2993c2736a09",
+  "height": 10,
+  "body": "deep chain",
+  "time": "1536599269",
+  "previousBlockHash": "a2888555fdcf8ab889711916ff8cffe8786ab20159554a8617b0779d8a05d35f"
 }
 ```
-8: Validate blockchain. The chain should now fail with blocks 2,4, and 7.
-```
-blockchain.validateChain();
-```
-
-### Tools
-
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
-
-Nodeclipse is free open-source project that grows with your contributions.
