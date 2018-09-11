@@ -43,7 +43,10 @@ server.route({
     method:'POST',
     path:'/block',
     handler:async (request, h) => {
-    	if(request.payload == null)
+    	if(request.payload == null || 
+    			(request.payload != null && (typeof request.payload.body  == 'undefined' 
+    				|| encodeURIComponent(request.payload.body).length == 0))
+    			)
     		return errorHandler(request, h, 'Block with empty body cannot be created/added.');
     	
     	let blockBody = encodeURIComponent(request.payload.body);
