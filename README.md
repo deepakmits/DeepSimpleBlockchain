@@ -29,6 +29,10 @@ npm install level --save
 npm install hapi --save
 ```
 
+## API Documentation - Swagger
+URL - http://localhost:8000/documentation
+
+
 # REST End Points
 ## GET Block end point
 Method Type : GET
