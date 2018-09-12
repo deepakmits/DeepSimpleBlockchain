@@ -21,10 +21,46 @@ server.route({
     }
 });
 
-//http://localhost:8000/block/0 
+
+//Get complete Blockchain as JSON
+//http://localhost:8000/chain
 server.route({
     method:'GET',
-    path:'/block/{height}',
+    path:'/chain',
+    handler:async (request,h) => {
+    	let fullBlockchain = [];
+    	let currentBlockchainHeight = await deepChain.getBlockHeight().then((currHeight) =>{
+    		return currHeight;
+    	});
+    	console.log(currentBlockchainHeight);
+    	for(let i=0;i<=currentBlockchainHeight;i++){
+    		let currBlock = await deepChain.getBlock(i).then((block) => {
+    			return block;
+    		});
+    		fullBlockchain.push(currBlock);
+    	}
+    	return h.response(fullBlockchain).type('application/json');
+    }
+});
+
+
+//http://localhost:8000/chain/validate
+server.route({
+    method:'GET',
+    path:'/chain/validate',
+    handler:async (request,h) => {
+    	let logs = await deepChain.validateChain().then((errorLog)=>{
+    			return errorLog;
+    	});
+    	console.log(logs);
+    	return h.response(logs).type('application/json');
+    }
+});
+
+//http://localhost:8000/chain/block/0 
+server.route({
+    method:'GET',
+    path:'/chain/block/{height}',
     handler:async (request, h) => {
     	let height = encodeURIComponent(request.params.height);
     	let retBlock = await deepChain.getBlock(height).then((block) => {
@@ -38,10 +74,10 @@ server.route({
     }
 });
 
-//http://localhost:8000/block/
+//http://localhost:8000/chain/block
 server.route({
     method:'POST',
-    path:'/block',
+    path:'/chain/block',
     handler:async (request, h) => {
     	if(request.payload == null || 
     			(request.payload != null && (typeof request.payload.body  == 'undefined' 

@@ -121,7 +121,9 @@ class Blockchain{
 			console.log('Blocks: '+errorLog);
 		} else {
 			console.log('No errors detected');
+			errorLog.push('No errors detected');
 		}
+		return errorLog;
 	}
 
 	//validating - matching current block to next block
