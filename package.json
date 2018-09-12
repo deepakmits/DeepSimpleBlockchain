@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "start": "node server.js",
+  "author": "Deepak Gupta",
   "license": "ISC",
   "dependencies": {
     "aa": "^0.1.40",
