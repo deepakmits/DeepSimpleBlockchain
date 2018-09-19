@@ -1,6 +1,11 @@
-# Blockchain Data
+# Blockchain based Star Notary Service
 
-Blockchain has the potential to change the way that the world approaches data. Develop Blockchain skills by understanding the data model behind Blockchain by developing your own simplified private blockchain.
+Blockchain has the potential to change the way that the world approaches data. 
+Main functions - 
+1) Register request for registration of Star.
+2) Validate request with your signature.(also request is valid for 5 mins only, at a time one user/wallet address can have one    valid request).
+3) Register your Star.
+4) Loop your Star by address, hash and height.
 
 ## Getting Started
 
@@ -27,6 +32,10 @@ npm install level --save
 - Install Node Js Framework Hapi with --save flag
 ```
 npm install hapi --save
+
+- Install bitcoinjs-message to verify your signature  --save flag
+```
+npm install bitcoinjs-message --save
 ```
 
 # REST End Points
