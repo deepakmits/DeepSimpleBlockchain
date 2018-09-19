@@ -14,7 +14,10 @@ function addLevelDBData(key,value){
 	return new Promise(function(resolve,reject){
 		db.put(key,value,function(err){
 			if(err) reject(err);
-			else resolve(value);
+			else {
+				console.log('saving validation request :'+value);
+				resolve(value);
+			}
 		});
 	});
 }
@@ -27,6 +30,7 @@ function getLevelDBData(key){
 		db.get(key, function(err,value){
 			if(err) reject(err);
 			else {
+				console.log('getting validation request :'+value);
 				resolve(value);
 			}
 		});
